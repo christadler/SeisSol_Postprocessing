@@ -7,15 +7,15 @@
 #               |_ 0000-surface.xdmf
 #                  ...
 #         ...
-#            0099/ (end number, usually 0099 or 0009)
-#               |_ 0099-surface.xdmf
+#          |_ 0009/ (end number, usually 0099 or 0009)
+#               |_ 0009-surface.xdmf
 #                  ...
 
-# Path to directory with outputs
-output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs_test_step3
 # This script assumes that you installed SeisSol in ~/SeisSol/
 #  please adjust the path in the postprocessing steps if necessary
-
+# Path to directory with outputs
+output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs_test_step3
+# output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs
 
 # ############################################## #
 #            Postprocessing                      #
