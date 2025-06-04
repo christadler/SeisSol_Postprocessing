@@ -14,8 +14,9 @@
 # This script assumes that you installed SeisSol in ~/SeisSol/
 #  please adjust the path in the postprocessing steps if necessary
 # Path to directory with outputs
-output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs_test_step3
+# output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs_test_step3
 # output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs
+output_dir=/hppfs/scratch/0A/di35ban/AltoTiberina/outputs_10bigRuns
 
 # ############################################## #
 #            Postprocessing                      #
@@ -34,8 +35,9 @@ for i in {0000..0009}; do
 #       ########################################################### #
 #       Postprocessing Step 2: Generate visualization at end time #
 #       ########################################################### #
-#       This will create a file named $filenameprefix-surface-resampled.xdmf
-        echo "Postprocessing Step 2: Generate visualization at end time"
-        python ~/SeisSol/postprocessing/visualization/tools/extractDataFromUnstructuredOutput.py $myfile --Data u1 u2 u3 --time i-1
+#       This will create files named $filenameprefix_final_displacement-surface.xdmf/.h5
+        echo "seissol_output_extractor $myfile --var u1 u2 u3 --time "i-1" --add2prefix _final_displacement"
+        seissol_output_extractor $myfile --var u1 u2 u3 --time "i-1" --add2prefix _final_displacement
+
         cd ..; pwd
 done
