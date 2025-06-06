@@ -33,11 +33,17 @@ for i in {0000..0009}; do
         python -u ~/SeisSol/postprocessing/science/GroundMotionParametersMaps/ComputeGroundMotionParametersFromSurfaceOutput_Hybrid.py $myfile --MP 8
 
 #       ########################################################### #
-#       Postprocessing Step 2: Generate visualization at end time #
+#       Postprocessing Step 2: Generate visualization at end time   #
 #       ########################################################### #
 #       This will create files named $filenameprefix_final_displacement-surface.xdmf/.h5
-        echo "seissol_output_extractor $myfile --var u1 u2 u3 --time "i-1" --add2prefix _final_displacement"
+        echo "Postprocessing Step 2: Generate visualization at "
         seissol_output_extractor $myfile --var u1 u2 u3 --time "i-1" --add2prefix _final_displacement
+
+#       ########################################################### #
+#       Postprocessing Step 3: Shrink fault output (to every 5s)    #
+#       ########################################################### #
+        echo "Postprocessing Step 3: Shrink fault output (to every 5s)"
+        seissol_output_extractor $i-fault.xdmf --var ASl Vr SRd SRs Sls Sld Pn0 Ts0 Td0 Mud PSR --time 0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90 --add2prefix _5s
 
         cd ..; pwd
 done
